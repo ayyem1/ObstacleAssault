@@ -15,6 +15,7 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+	SetActorLocation(DesiredPosition);
 	
 }
 
