@@ -15,7 +15,6 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	SetActorLocation(DesiredPosition);
 	
 }
 
@@ -23,6 +22,9 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	DesiredPosition.Y++;
+
+	SetActorLocation(DesiredPosition);
 
 }
 
