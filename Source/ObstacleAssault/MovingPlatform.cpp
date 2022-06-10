@@ -24,15 +24,19 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	auto newLocation = GetActorLocation();
-	newLocation += (PlatformVelocity * DeltaTime);
+	auto newLocation = GetActorLocation() + (PlatformVelocity * DeltaTime);
 	SetActorLocation(newLocation);
 
+	// Clamp movement to stay within bounds specified by MaxMoveDistance
 	auto distanceTravelled = FVector::Dist(newLocation, StartLocation);
 	if (distanceTravelled >= MaxMoveDistance)
 	{
+	    // If the platform has shot past where we wanted it to move, reset its location
+		StartLocation = StartLocation + PlatformVelocity.GetSafeNormal() * MaxMoveDistance;
+		SetActorLocation(StartLocation);
+
+		// Reverse direction
 		PlatformVelocity = -PlatformVelocity;
-		StartLocation = newLocation;
 	}
 }
 
