@@ -1,7 +1,7 @@
 # ObstacleAssault
 FEATURES
 --------
-- Created 3D obstacle course
+- 3D obstacle course
 - 3rd person player character movement
 
 INSTALLATION INSTRUCTIONS
